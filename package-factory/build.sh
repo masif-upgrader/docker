@@ -3,6 +3,6 @@ set -exo pipefail
 
 cd /src
 
-go mod download
+if [ -e go.mod ]; then go mod download; fi
 .travis-ci/mk-pkgs.sh
-go test -failfast -race -v -cover
+if [ -e go.mod ]; then go test -failfast -race -v -cover; fi
